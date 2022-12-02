@@ -3,7 +3,7 @@ import getAllproducts from "@framework/product/get-all-products";
 import { getConfig } from "@framework/api/config";
 import { Layout } from "@components/common";
 import { ProductCard } from "@components/product";
-import { Grid } from "@components/ui";
+import { Grid, Hero } from "@components/ui";
 
 export async function getStaticProps() {
   const config = getConfig();
@@ -27,6 +27,7 @@ export default function Home({
           <ProductCard key={product.id} product={product}/>
         ))}
       </Grid>
+      <Hero headline="hello baked beans, heinz boyz" description="wow thats great mate, wow nice rune scimmy"/>
     </>
   );
 }
