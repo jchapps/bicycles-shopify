@@ -1,0 +1,4 @@
+.root {
+  @apply bg-yellow-300 h-full mx-auto;
+  max-width: 2460px;
+}
