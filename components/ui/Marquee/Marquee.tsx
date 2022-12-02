@@ -1,20 +1,19 @@
-import React, { ReactNode, FC } from 'react';
-import styles from './Marquee.module.css'
+import React, { ReactNode, FC } from "react";
+import styles from "./Marquee.module.css";
+import Ticker from "react-ticker";
 
 interface Props {
-  children: ReactNode[]
+  children: ReactNode[];
 }
 
-
-const Marquee: FC<Props> = ({children}) => {
+const Marquee: FC<Props> = ({ children }) => {
   return (
     <div className={styles.root}>
-      <div className={styles.container}>
-      {children}
-      </div>
-
+      <Ticker offset={100}>
+        {() => <div className={styles.container}>{children}</div>}
+      </Ticker>
     </div>
   );
-}
+};
 
 export default Marquee;
