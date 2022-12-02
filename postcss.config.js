@@ -3,3 +3,10 @@ module.exports = {
     "tailwindcss"
 ],
 }
+
+// //for testing
+// module.exports = {
+//   plugins: [
+//     require("tailwindcss")
+// ],
+//}
