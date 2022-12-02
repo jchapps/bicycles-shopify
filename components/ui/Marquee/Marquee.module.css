@@ -3,7 +3,7 @@
 }
 
 .container {
-  @apply flex flex-row flex;
+  @apply flex flex-row;
 
   & > * {
     @apply flex-1 px-16 py-4 relative
