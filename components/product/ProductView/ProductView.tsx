@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { FC } from "react";
 import s from "./ProductView.module.css";
-import { Container } from "@components/ui";
+import { Container, Button } from "@components/ui";
 import Image from "next/image";
 import { Product } from "@common/types/product";
 import { ProductSlider } from "@components/product";
@@ -13,7 +13,7 @@ interface Props {
 const ProductView: FC<Props> = ({ product }) => {
   return (
     <Container>
-      <div className={cn(s.root, "fit")}>
+      <div className={cn(s.root, "fit", "mb-5")}>
         <div className={cn(s.productDisplay, "fit")}>
           <div className={s.nameBox}>
             <h1 className={s.name}>{product.name}</h1>
@@ -24,7 +24,7 @@ const ProductView: FC<Props> = ({ product }) => {
             </div>
           </div>
           <ProductSlider>
-            { product.images.map(image =>
+            {product.images.map((image) => (
               <div key={image.url} className={s.imageContainer}>
                 <Image
                   className={s.img}
@@ -35,7 +35,7 @@ const ProductView: FC<Props> = ({ product }) => {
                   quality="85"
                 />
               </div>
-            )}
+            ))}
           </ProductSlider>
         </div>
         <div className={s.sidebar}>
@@ -49,13 +49,7 @@ const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <button
-              onClick={() => {}}
-              aria-label="Add to Cart"
-              className={s.button}
-            >
-              Add to Cart
-            </button>
+            <Button>Add to Cart</Button>
           </div>
         </div>
       </div>
