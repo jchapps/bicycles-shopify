@@ -39,8 +39,7 @@ export default function ProductSlug({
 }: InferGetServerSidePropsType<typeof getStaticProps>) {
   return (
     <div>
-      {product.name}
-      {product.slug}
+            {JSON.stringify(product, null, 2)}
     </div>
   );
 }
