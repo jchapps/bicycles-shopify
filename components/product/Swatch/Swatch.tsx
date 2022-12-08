@@ -2,7 +2,7 @@ import { FC } from "react";
 import s from "./Swatch.module.css";
 import { Check } from "@components/icons";
 import cn from "classnames";
-import { isDark, useDark } from "@lib/color"
+import { isDark} from "@lib/color"
 
 interface Props {
   color?: string;
