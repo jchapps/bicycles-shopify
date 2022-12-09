@@ -1,4 +1,3 @@
-
 import {
   normalizeProduct,
   getAllProductsQuery

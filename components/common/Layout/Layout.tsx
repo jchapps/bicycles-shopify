@@ -1,17 +1,17 @@
 import { FC } from "react";
-import style from "./Layout.module.css";
+import s from "./Layout.module.css";
 import { Footer, Navbar } from "@components/common";
 import { Sidebar } from "@components/ui";
-import { CartSidebar } from "@components/Cart";
+import { CartSidebar } from "@components/cart";
 import { useUI } from "@components/ui/context";
-import { ApiProvider } from "@common";
+import { ApiProvider } from "@framework";
 
 const Layout: FC = ({ children }) => {
   const { isSidebarOpen, closeSidebar } = useUI();
 
   return (
     <ApiProvider>
-      <div className={style.root}>
+      <div className={s.root}>
         <Navbar />
         <Sidebar onClose={closeSidebar} isOpen={isSidebarOpen}>
           <CartSidebar />

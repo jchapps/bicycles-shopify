@@ -6,7 +6,7 @@ import {
 const fetchApi = async <T>({
   url,
   query,
-  variables}: ApiFetcherOptions
+  variables }: ApiFetcherOptions
 ): Promise<ApiFetcherResults<T>> => {
   const res = await fetch(url, {
     method: "POST",

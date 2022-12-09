@@ -1,7 +1,11 @@
-import { ReactNode, useContext } from "react";
-import { getConfig } from "./api/config";
-import { ApiProvider as CoreApiProvider, useApiProvider as useApiCoreProvider } from "@common";
+import { ReactNode } from "react";
 
+import {
+  ApiProvider as CoreApiProvider,
+  useApiProvider as useCoreApiProvider,
+} from "@common";
+
+import { getConfig } from "./api/config";
 const config = getConfig();
 
 interface ShopifyApiProviderProps {
@@ -9,11 +13,7 @@ interface ShopifyApiProviderProps {
 }
 
 export const ApiProvider = ({ children }: ShopifyApiProviderProps) => {
-  return (
-    <CoreApiProvider config={{ ...config, testKey: "testValue" }}>
-      {children}
-    </CoreApiProvider>
-  );
+  return <CoreApiProvider config={{ ...config }}>{children}</CoreApiProvider>;
 };
 
-export const useApiProvider = () => useApiCoreProvider()
+export const useApiProvider = () => useCoreApiProvider();
