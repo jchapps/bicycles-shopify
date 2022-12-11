@@ -2,10 +2,13 @@ import { FC } from 'react'
 import { Bag, Cross } from '@components/icons'
 import cn from "classnames"
 import { useUI } from '@components/ui/context'
+import useCart from '@framework/cart/use-cart'
 
 const CartSidebar: FC = () => {
   const isEmpty = true
-  const { closeSidebar } = useUI()
+  const { closeSidebar} = useUI()
+  const cart = useCart()
+  console.log(cart)
 
   const rootClass = cn(
     "h-full flex flex-col",
@@ -36,7 +39,7 @@ const CartSidebar: FC = () => {
             Your cart is empty
           </h2>
           <p className="text-accents-3 px-10 text-center pt-2">
-            Cart info
+            Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
           </p>
         </div>
       ) :
