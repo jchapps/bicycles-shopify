@@ -1,5 +1,5 @@
 import useCart from "@common/cart/use-cart";
-import { createCheckout } from "@framework/utils";
+import { createCheckout, getCheckoutQuery } from "@framework/utils";
 
 
 export default useCart;
@@ -7,14 +7,14 @@ export default useCart;
 export const handler = {
   fetchOptions: {
     //get checkout query
-    query: "query {hello}",
+    query: getCheckoutQuery,
   },
   async fetcher({ fetch, options, input: { checkoutId } }: any) {
     //need checkoutid
     let checkout;
     //check if checkout exists
     if (checkoutId) {
-      const { data } = await fetch({ ...options });
+      const { data } = await fetch({ ...options, variables: {checkoutId} });
 
       checkout = data.node;
     } //no checkout then create checkout
