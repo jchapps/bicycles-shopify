@@ -1,27 +1,27 @@
-
-import cn from 'classnames'
-import Image from 'next/image'
-import Link from 'next/link'
-import s from './CartItem.module.css'
-import { Trash, Plus, Minus } from '@components/icons'
-import { LineItem } from '@common/types/cart'
+import cn from "classnames";
+import Image from "next/image";
+import Link from "next/link";
+import s from "./CartItem.module.css";
+import { Trash, Plus, Minus } from "@components/icons";
+import { LineItem } from "@common/types/cart";
 
 const CartItem = ({
   item,
-  currencyCode
+  currencyCode,
 }: {
-  item: LineItem
-  currencyCode: string
+  item: LineItem;
+  currencyCode: string;
 }) => {
-  const price = (item.variant.price! * item.quantity) || 0
+  const price = item.variant.price! * item.quantity || 0;
+  const { options } = item;
   return (
     <li
-      className={cn('flex flex-row space-x-8 py-8', {
-        'opacity-75 pointer-events-none': false
+      className={cn("flex flex-row space-x-8 py-8", {
+        "opacity-75 pointer-events-none": false,
       })}
     >
       <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer">
-        <Link href={`/product/${item.path}`}>
+        <Link href={`/`}>
           <Image
             onClick={() => {}}
             className={s.productImage}
@@ -41,10 +41,19 @@ const CartItem = ({
             {item.name}
           </span>
         </Link>
-        Options Here
+        {options &&
+          options.length > 0 &&
+          options.map((option) => (
+            <span
+              key={`${item.id}-${option.displayName}`}
+              className="text-sm font-semibold text-accents-7"
+            >
+              {option.values[0].label}
+            </span>
+          ))}
         <div className="flex items-center mt-3">
           <button type="button">
-            <Minus onClick={() => {}}/>
+            <Minus onClick={() => {}} />
           </button>
           <label>
             <input
@@ -58,21 +67,20 @@ const CartItem = ({
             />
           </label>
           <button type="button">
-            <Plus onClick={() => {}}/>
+            <Plus onClick={() => {}} />
           </button>
         </div>
       </div>
       <div className="flex flex-col justify-between space-y-2 text-base">
-        <span>{price} {currencyCode}</span>
-        <button
-          onClick={() => {}}
-          className="flex justify-end outline-none"
-        >
+        <span>
+          {price} {currencyCode}
+        </span>
+        <button onClick={() => {}} className="flex justify-end outline-none">
           <Trash />
         </button>
       </div>
     </li>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;
