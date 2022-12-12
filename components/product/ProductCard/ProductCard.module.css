@@ -19,6 +19,7 @@
 
 .productImage {
   @apply transition-transform block;
+  object-fit: contain
 }
 
 .productTag {
