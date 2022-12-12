@@ -1,4 +1,7 @@
-export const checkoutDetailFragment = `     id
+
+
+export const checkoutDetailFragment = `
+id
 webUrl
 subtotalPriceV2{
   amount
@@ -28,6 +31,10 @@ lineItems(first: 250) {
         id
         sku
         title
+        selectedOptions {
+          name
+          value
+        }
         image {
           originalSrc
           altText
@@ -49,4 +56,5 @@ lineItems(first: 250) {
       quantity
     }
   }
-}`;
+}
+`
