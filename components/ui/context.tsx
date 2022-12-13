@@ -1,31 +1,34 @@
-import React, { useReducer, createContext, useContext, FC, useMemo } from "react";
+import { createContext, useContext, useReducer, useMemo } from "react"
 
 export interface StateModifiers {
-  openSidebar: () => void;
-  closeSidebar: () => void;
+  openSidebar: () => void
+  closeSidebar: () => void
 }
 
 export interface StateValues {
-  isSidebarOpen: boolean;
+  isSidebarOpen: boolean
 }
 
-const StateModifiers = {
+const stateModifiers = {
   openSidebar: () => {},
-  closeSidebar: () => {},
-};
+  closeSidebar: () => {}
+}
 
-const initialState = { isSidebarOpen: false };
+const initialState = { isSidebarOpen: false }
 
-type State = StateValues & StateModifiers;
+type State = StateValues & StateModifiers
+
+
+interface Props {
+  children: React.ReactNode
+}
 
 const UIContext = createContext<State>({
-  ...StateModifiers,
-  ...initialState,
-});
+  ...stateModifiers,
+  ...initialState
+})
 
-type Action = {
-  type: "OPEN_SIDEBAR" | "CLOSE_SIDEBAR";
-};
+type Action = { type: "OPEN_SIDEBAR" | "CLOSE_SIDEBAR" }
 
 function uiReducer(state: StateValues, action: Action) {
   switch(action.type) {
@@ -37,32 +40,37 @@ function uiReducer(state: StateValues, action: Action) {
     }
     case "CLOSE_SIDEBAR": {
       return {
-      ...state,
-      isSidebarOpen: false
+        ...state,
+        isSidebarOpen: false
       }
-
     }
   }
 }
 
-export const UIProvider: FC = ({ children }) => {
+function UIProvider({children}: Props) {
   const [state, dispatch] = useReducer(uiReducer, initialState)
 
-  const openSidebar = () => dispatch({type: "OPEN_SIDEBAR"});
-  const closeSidebar = () => dispatch({type: "CLOSE_SIDEBAR"});
+  const openSidebar = () => dispatch({type: "OPEN_SIDEBAR"})
+  const closeSidebar = () => dispatch({type: "CLOSE_SIDEBAR"})
 
   const value = useMemo(() => {
-    return {
+    return{
       ...state,
       openSidebar,
-      closeSidebar,
+      closeSidebar
     }
   }, [state.isSidebarOpen])
 
-  return <UIContext.Provider value={value}>{children}</UIContext.Provider>;
-};
+  return (
+    <UIContext.Provider value={value}>
+      {children}
+    </UIContext.Provider>
+  )
+}
 
 export const useUI = () => {
-  const context = useContext(UIContext);
-  return context;
-};
+  const context = useContext(UIContext)
+  return context
+}
+
+export default UIProvider

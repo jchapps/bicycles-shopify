@@ -58,6 +58,7 @@ const CartItem = ({
           height={150}
           src={item.variant.image!.url}
           unoptimized
+          alt="bike"
         />
       </div>
       <div className="flex-1 flex flex-col text-base">

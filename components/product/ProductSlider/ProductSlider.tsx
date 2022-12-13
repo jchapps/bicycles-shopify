@@ -1,6 +1,6 @@
 
-import React, { FC, Children, isValidElement, useState } from "react"
-import s from "./ProductSlider.module.css"
+import React, { Children, isValidElement, useState } from "react"
+import style from "./ProductSlider.module.css"
 import { useKeenSlider } from "keen-slider/react"
 import cn from "classnames"
 
@@ -10,28 +10,25 @@ interface Props {
 
 function ProductSlider({children}: Props) {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [sliderRef, slider] = useKeenSlider({
+  const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
     loop: true,
     slideChanged(s) {
-      setCurrentSlide(s.details().relativeSlide)
+      console.log("changing to slide: ", s.track.details.rel)
     },
   })
-
   console.log(currentSlide)
 
   return (
-    <div className={s.root}>
-      <div
-        ref={sliderRef as React.RefObject<HTMLDivElement>}
-        className="keen-slider h-full transition-opacity">
+    <div className={style.root}>
+      <div ref={sliderRef as any} className="keen-slider h-full transition-opacity">
         <button
-          onClick={slider?.prev}
-          className={cn(s.leftControl, s.control)}
+          onClick={instanceRef.current?.prev}
+          className={cn(style.leftControl, style.control)}
         />
         <button
-          onClick={slider?.next}
-          className={cn(s.rightControl, s.control)}
+          onClick={instanceRef.current?.next}
+          className={cn(style.rightControl, style.control)}
         />
         { Children.map(children, child => {
           if (isValidElement(child)) {
