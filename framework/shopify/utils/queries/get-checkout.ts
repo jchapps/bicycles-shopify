@@ -1,15 +1,15 @@
-import {checkoutDetailFragment} from '../common'
+
+import { checkoutDetailFragment } from "../common"
 
 const getCheckout = `
-query($checkoutId: ID!){
-  node(id: $checkoutId) {
-    ... on Checkout {
-      ${checkoutDetailFragment}
+  query($checkoutId: ID!){
+    node(id: $checkoutId) {
+      ... on Checkout {
+        ${checkoutDetailFragment}
+      }
     }
   }
-}
 `
-
 
 
 export default getCheckout

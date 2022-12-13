@@ -23,3 +23,8 @@ const configWrapper = new Config({
 export function getConfig() {
   return configWrapper.getConfig()
 }
+
+
+
+
+

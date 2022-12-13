@@ -1,3 +1,5 @@
+
+
 import { ApiConfig, Variables } from "@common/types/api";
 import { getProductQuery, normalizeProduct } from "@framework/utils";
 
@@ -13,21 +15,21 @@ type ReturnType = {
 }
 
 const getProduct = async (options: {
-  config: ApiConfig;
-  variables: Variables;
+  config: ApiConfig,
+  variables: Variables
 }): Promise<ReturnType> => {
-  const { config, variables } = options;
+  const { config, variables } = options
 
   const { data } = await config.fetch<FetchType>({
     query: getProductQuery,
     variables
-  });
+  })
 
   const { productByHandle } = data
 
   return {
     product: productByHandle ? normalizeProduct(productByHandle) : null
-  };
-};
+  }
+}
 
-export default getProduct;
+export default getProduct

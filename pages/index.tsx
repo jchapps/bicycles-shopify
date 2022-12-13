@@ -1,5 +1,5 @@
 import type { InferGetStaticPropsType } from "next";
-import { getAllProducts } from "@framework/product"
+import { getAllProducts } from "@framework/product";
 import { getConfig } from "@framework/api/config";
 import { Layout } from "@components/common";
 import { ProductCard } from "@components/product";
@@ -24,27 +24,16 @@ export default function Home({
     <>
       <Grid>
         {products.slice(0, 3).map((product) => (
-          <ProductCard variant = "slim" key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </Grid>
       <Hero
-        headline="hello baked beans, heinz boyz"
-        description="wow thats great mate, wow nice rune scimmy"
+        headline="New Arrivals"
+        description="This is a test store but we do sell bikes of only the highest quality. Trusted by millions around the world. Offroad, racing, mountain biking. We have everything."
       />
       <Marquee>
-      {products.slice(0, 3).map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </Marquee>
-      {/* test */}
-      <Grid layout="B">
         {products.slice(0, 3).map((product) => (
-          <ProductCard variant = "slim" key={product.id} product={product} />
-        ))}
-      </Grid>
-      <Marquee variant="secondary">
-      {products.slice(0, 3).map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} variant="slim" product={product} />
         ))}
       </Marquee>
     </>
