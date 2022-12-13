@@ -1,8 +1,8 @@
 import "@assets/main.css";
-import 'keen-slider/keen-slider.min.css'
+import "keen-slider/keen-slider.min.css";
 import { AppProps } from "next/app";
 import { FC } from "react";
-import { useUI, UIProvider } from "@components/ui/context";
+import { UIProvider } from "@components/ui/context";
 
 const Noop: FC = ({ children }) => <>{children}</>;
 
@@ -11,7 +11,6 @@ function MyApp({
   pageProps,
 }: AppProps & { Component: { Layout: FC } }) {
   const Layout = Component.Layout ?? Noop;
-  const ui = useUI()
 
   return (
     <UIProvider>

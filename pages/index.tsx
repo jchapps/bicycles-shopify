@@ -28,10 +28,20 @@ export default function Home({
         ))}
       </Grid>
       <Hero
-        headline="New Arrivals"
-        description="This is a test store but we do sell bikes of only the highest quality. Trusted by millions around the world. Offroad, racing, mountain biking. We have everything."
+        headline="Cookies, ice cream and muffin"
+        description="Marshmallow tart jelly icing cotton candy tootsie roll cotton candy candy canes. Cake liquorice sesame snaps. Cupcake cake cheesecake pie marshmallow lollipop soufflé marshmallow dessert. Cheesecake jujubes halvah chupa chups lollipop tootsie roll. Jelly-o tiramisu jelly toffee cake croissant lemon drops pudding. Donut sesame snaps gummi bears toffee. Sesame snaps jelly-o oat cake chocolate marzipan cake lollipop. Gingerbread cheesecake jujubes fruitcake cake. Tiramisu cotton candy marzipan candy canes oat cake pudding bonbon."
       />
       <Marquee>
+        {products.slice(0, 3).map((product) => (
+          <ProductCard key={product.id} variant="slim" product={product} />
+        ))}
+      </Marquee>
+      <Grid layout="B">
+        {products.slice(0, 3).map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </Grid>
+      <Marquee variant="secondary">
         {products.slice(0, 3).map((product) => (
           <ProductCard key={product.id} variant="slim" product={product} />
         ))}

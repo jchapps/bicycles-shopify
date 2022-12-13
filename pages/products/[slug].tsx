@@ -3,12 +3,12 @@ import { getConfig } from "@framework/api/config";
 import { getAllProductsPaths, getProduct } from "@framework/product";
 import {
   GetStaticPaths,
-  GetStaticPathsContext,
   GetStaticPropsContext,
-  InferGetServerSidePropsType,
+  InferGetStaticPropsType,
 } from "next";
 import { ProductView } from "@components/product";
 
+// fetch all of the products slugs
 export const getStaticPaths: GetStaticPaths = async () => {
   const config = getConfig();
   const { products } = await getAllProductsPaths(config);
@@ -19,10 +19,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+// provide product spefici data to the page
 export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<{ slug: string }>) => {
   const config = getConfig();
+
   const { product } = await getProduct({
     config,
     variables: { slug: params?.slug },
@@ -37,7 +39,7 @@ export const getStaticProps = async ({
 
 export default function ProductSlug({
   product,
-}: InferGetServerSidePropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return <>{product && <ProductView product={product} />}</>;
 }
 
