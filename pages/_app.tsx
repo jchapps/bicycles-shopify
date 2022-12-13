@@ -5,12 +5,13 @@ import UIProvider from "@components/ui/context"
 import "keen-slider/keen-slider.min.css"
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 function Noop({ children }: Props) {
-  <>{children}</>;
+  <>{children}</>
 }
+
 
 function MyApp({Component, pageProps}: AppProps & {Component: {Layout: any}}) {
 
@@ -29,4 +30,4 @@ function MyApp({Component, pageProps}: AppProps & {Component: {Layout: any}}) {
   )
 }
 
-export default MyApp;
+export default MyApp
