@@ -28,8 +28,8 @@ export default function Home({
         ))}
       </Grid>
       <Hero
-        headline="Cookies, ice cream and muffin"
-        description="Marshmallow tart jelly icing cotton candy tootsie roll cotton candy candy canes. Cake liquorice sesame snaps. Cupcake cake cheesecake pie marshmallow lollipop soufflé marshmallow dessert. Cheesecake jujubes halvah chupa chups lollipop tootsie roll. Jelly-o tiramisu jelly toffee cake croissant lemon drops pudding. Donut sesame snaps gummi bears toffee. Sesame snaps jelly-o oat cake chocolate marzipan cake lollipop. Gingerbread cheesecake jujubes fruitcake cake. Tiramisu cotton candy marzipan candy canes oat cake pudding bonbon."
+        headline="New Arrivals"
+        description="This is a test store with placeholder products. Bicycles were introduced in the 19th century in Europe. By the early 21st century, more than 1 billion were in existence. These numbers far exceed the number of cars, both in total and ranked by the number of individual models produced."
       />
       <Marquee>
         {products.slice(0, 3).map((product) => (
