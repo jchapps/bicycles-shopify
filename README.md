@@ -1,6 +1,8 @@
-# Belated Bicycles
+# 🚲 Belated Bikes
 
-Next.js/Tailwind shopify headless store.
+Shopify headless store built in Next.js, Typescript and Tailwind.
+
+https://bicycles-shopify.vercel.app/
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
